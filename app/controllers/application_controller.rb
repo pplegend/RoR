@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
  
   private
   def initialize_cart
+    
      @categories=Category.all
     if session[:cart_id]
        @cart=Cart.find(session[:cart_id])
