@@ -222,3 +222,7 @@ overflow:visible;
 ul.nav li{
   float:left;
 }
+body{
+  align:center;
+  margin:auto;
+}

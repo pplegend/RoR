@@ -51,6 +51,7 @@ Store::Application.routes.draw do
   match '/forget_password/', :to=>'users#forget_password'
   match '/reset_password/(:email)', :to=>'users#reset_password',:constraints => { :email => /[^\/]+/}, :as=>'reset_password'
   match '/recover_password/(:email/:code)', :to=>'users#recover_password',:constraints => { :email => /[^\/]+/}
+  match '/auth/:provider/callback', :to=>'sessions#auth_create'
   match 'user/active/:email/:code' => 'users#active_user', :constraints => { :email => /[^\/]+/}
   # The priority is based upon order of creation:
   # first created -> highest priority.

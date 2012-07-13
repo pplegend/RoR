@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
     end 
     @related_products=@related_products.uniq{|product| product.id}
 
-    @comments=@product.comments.paginate(:page=> params[:page],:per_page=>5)
+    @comments=@product.comments.paginate(:page=> params[:page],:per_page=>6)
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @product }
