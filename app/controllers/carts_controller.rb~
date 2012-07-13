@@ -1,0 +1,12 @@
+class CartsController < ApplicationController
+  def add
+    @product=Product.find(params[:id])
+    @item=@cart.add(params[:id])
+    flash[:cart_notice]="Added <em>#{@product.title}</em>"
+     respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js 
+     end
+    
+  end
+end

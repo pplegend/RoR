@@ -1,0 +1,19 @@
+<table>  
+  <tr>  
+    <th width="60%">Topic Title</th>  
+    <th width="10%">Replies</th>  
+    <th width="30%">Last Post</th>  
+  </tr>  
+  <% for topic in @forum.topics %>  
+    <tr>  
+      <td><%= link_to h(topic.name), forum_topic_path(@forum,topic) %>  
+      <td><%= topic.posts.size %></td>  
+      <td class="right"><%= distance_of_time_in_words_to_now topic.updated_at %> by <%= topic.user.name %></td>  
+      <td><%= link_to "Edit", edit_forum_topic_path(@forum,topic) %></td>  
+      <td><%= link_to "Destroy", forum_topic_path(@forum,topic), :confirm => 'Are you sure?', :method => :delete %></td>  
+    </tr>  
+  <% end %>  
+</table>  
+<p><%= link_to "Forum lists", "/forums" %> <%= link_to "New Topic", new_forum_topic_path(@forum) %></p>   
+
+

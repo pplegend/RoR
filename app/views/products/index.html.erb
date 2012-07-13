@@ -1,0 +1,6 @@
+<h1>Listing products</h1>
+<% @products.each do |product| %>
+    <p><%= link_to image_tag(product.image.url(:thumb)), product %></p>
+
+<% end %>
+<%= link_to 'New Product', new_product_path %>

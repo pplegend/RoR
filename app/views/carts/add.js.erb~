@@ -1,0 +1,6 @@
+/** Replace the content of shopping cart */
+$("#shopping_cart").html("<%= escape_javascript(render("carts/cart")) %>");
+
+/** show product list 
+$("#content_middle").append("<%= escape_javascript(render("products/products")) %>");
+*/

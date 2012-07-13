@@ -1,0 +1,29 @@
+<div id="main" role="main">
+ <ul id="tiles">
+<% @products.each do |@product| %>
+
+    <li>
+    <div class="button_group">
+    <button  class="btn comment_button"> Comment</button>
+    <button  class="btn cart_button"> Cart</button>
+    <%= render 'rates/rate_form'%>
+    </div>
+    <%= link_to image_tag(@product.image.url(:original)), @product %>
+    <p class="line-background" data-content="<%= @product.description %>"><%= @product.title %><span class="product_price">$<%= @product.price %></span></p>
+
+    <p><span class="<%=@product.id%>_product_rate">
+       <% if @product.rates.first %><%= @product.rates.first.rate %> likes
+       <% else %> 0 like
+       <% end %></span>
+
+    <span class="<%=@product.id%>_comments_count">
+     <% if @product.comments.first %><%= @product.comments.count %> comments
+       <% else %> 0 comment
+       <% end %></span></p>
+    <div class="comment_div">
+       <%= render "comments/comment_form" %>
+    </div>
+    </li>
+<% end %>
+<ul>
+</div>

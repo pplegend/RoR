@@ -1,0 +1,11 @@
+
+
+<%= div_for comment do %>
+      <% if current_user && current_user.admin? %>
+      <%= link_to 'Delete', product_comment_path(@product), :method => :delete, :class => "delete", :remote => true  %>
+      <% end %>
+
+     <p><b><%= link_to comment.user.name, user_path(comment.user.id) %></b></p>
+     <%=  comment.content %> <span class="comment_date_font"><%=time_ago_in_words(comment.created_at) %> ago</span>
+<% end %>
+

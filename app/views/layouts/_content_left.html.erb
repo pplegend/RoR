@@ -1,0 +1,6 @@
+<div id="content_left" class="span2"> 
+<%if signed_in? %>
+	<%= current_user.name %>
+<% end %>
+<%= render :template=>'categories/index' %>
+</div>

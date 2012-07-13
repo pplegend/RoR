@@ -1,0 +1,2 @@
+<strong>Please confirm adding <em><%= @product.title %></em> to your shopping cart.</strong>
+<%= button_to "Confirm", :controller=> :carts_controller,:action=>add, :id=>@product %>

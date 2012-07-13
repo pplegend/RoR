@@ -1,0 +1,75 @@
+
+<div class="container ">
+  <div class="row">
+    <div class="span5"><div class="radio_box"><%= image_tag @product.image.url(:medium) %></div> 
+
+     <%= render 'rates/rate_form'%>
+     <button class="product_checkout_button btn"><i class="icon-shopping-cart"></i>CheckOut</button> 
+      <div><%= link_to "add", {:controller=>"carts", :action=>"add", :id=>@product.id}, :remote=>true %></div>
+     <div class="well">
+       <p><i class="icon-bell"></i><%= @product.price %>$</p>
+       <p><i class="icon-tags"></i> <%= @product.tag_list %></p>
+       <p><i class="icon-info-sign"></i><%= @product.description %></p>
+    </div>
+
+  </div>
+
+    <div class="span6 radio_box"> 
+       <% if current_user && current_user.admin? %>
+       <%= link_to 'Edit', edit_product_path(@product) %>
+       <%= link_to 'Destroy', @product, :confirm => 'Are you sure?', :method => :delete %><% end %>
+       
+   <div class="show_page_right">
+   <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+        
+      <a class="addthis_button_preferred_1"></a>
+      <a class="addthis_button_preferred_2"></a>
+      <a class="addthis_button_preferred_3"></a>
+      <a class="addthis_button_preferred_4"></a>
+      <a class="addthis_button_compact"></a>
+      <a class="addthis_counter addthis_bubble_style"></a>
+   </div>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4ff5f2756c34f6f9"></script>
+    <br/>
+<%= render "comments/comment_form" %>
+<div id="comments" >
+  <%= render @comments %>
+
+</div>
+ <%= page_navigation_links @comments %>
+</div>
+</div>
+  </div>
+
+<div class="row radio_box_without_radius">
+  <div class="span1">
+  </div>
+
+
+  <div class="span5">
+        <div class="related_products_list"><ul class="nav">
+         <% @related_products.each do |related_product| %>
+         <li><dl><dd class="pic"><%= image_tag related_product.image.url(:thumb) %></dd> 
+          <dt>title</dt><dd>price</dd></dl></li>
+          <% end %>
+     </ul>
+     </div>
+  </div>
+
+   <div class="span5">
+  
+   <div>
+<% if @cart %>
+<div id="shopping_cart">
+<%= render :partial => "carts/cart" %>
+</div>
+<% end %>
+</div>
+
+  </div>
+</div>
+</div>
+
+  
+
+

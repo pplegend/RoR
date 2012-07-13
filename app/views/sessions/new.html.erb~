@@ -1,0 +1,17 @@
+<%= form_for(:session, :url=>sessions_path, :html=>{:class=>'form-inline'}) do |f| %>
+
+   <%= f.text_field :email,:class=>"input-small",:placeholder=>"Email" %>
+   <%= f.password_field :password,:class=>"input-small",:placeholder=>"Password" %>
+   <%= f.submit "Sign in",:class=>"btn" %><p></p>
+   <p><label class="checkbox"><input type="checkbox"> Remember me</label>
+   <%= link_to " Forget password?", forget_password_path %></p>
+<% end %>
+
+     <hr />
+      <p>Or log in with your
+      <a id="google" href="#"><img src="img/google.jpg"  /></a>
+      <a id="facebook" href="#"><img src="img/facebook.jpg" /></a></p>
+      <hr />
+
+
+

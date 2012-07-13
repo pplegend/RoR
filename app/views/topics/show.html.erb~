@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @topic.name %>
+</p>
+<p>
+  <b>Description:</b>
+  <%= @topic.description %>
+</p>
+<span id="posts_count"><%= pluralize(@posts.count, "Comment") %></span>
+<div id="comments">
+  <%= render :partial => @posts, :locals => { :list => true } %>
+</div>
+<% form_for Post.new  do |f| %>
+	<%= f.label :content, "Your comments" %><br />
+	<%= f.text_area :content, :rows => 8 %><br />
+         <input type="hidden" name="topic_id" value="<%= params[:id]%>">
+	<%= f.submit "Add comment" %>
+<% end %>
+<%= link_to 'Edit', edit_topic_path(@topic) %> |
+<%= link_to 'Back', topics_path %>

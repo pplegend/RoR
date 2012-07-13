@@ -1,0 +1,5 @@
+class Address < ActiveRecord::Base
+   attr_accessible :city, :postal_code, :street, :country
+   validates :city,  :postal_code, :street, :country, :presence => true,
+   belongs_to :user
+end

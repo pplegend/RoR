@@ -1,0 +1,8 @@
+<% if Cart.where(:session_id=> request.session_options[:cart_id]).empty? %>
+Cart is empyt
+<% else %>
+<%= raw form_tag url_for(:action=>"empty_cart", :controller=>:ajax),{:method=>:post, :remote=>true, 'data-confirm'=>"Are you sure?"} %>
+
+<%= raw submit_tag "Empty Cart", :id=>"empty_cart_submit", :class=>"empty_cart_button" %>
+</form>
+<% end %>

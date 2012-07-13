@@ -1,0 +1,11 @@
+<%= form_for @order do |f| %>
+  <%= f.error_messages %>
+  <% if @order.express_token.blank? %>
+    ...
+  <% else %>
+    <%= f.hidden_field :express_token %>
+    <p>Name: <%=h @order.ship_to_first_name %> <%=h @order.ship_to_last_name %></p>
+    <p>TODO Display order confirmation details</p>
+  <% end %>
+  <p><%= f.submit "Complete Order" %></p>
+<% end %>

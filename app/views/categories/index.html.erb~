@@ -1,0 +1,7 @@
+<ul class="nav nav-pills nav-stacked">
+<% @categories.each do |category| %>
+    <li><%= link_to category.content, category_products_path(category) %></li>
+
+<% end %>
+</ul>
+<%= link_to 'New Category', new_category_path %>

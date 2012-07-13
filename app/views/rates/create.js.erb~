@@ -1,0 +1,5 @@
+
+/* Replace the count of rates */
+$(".<%=@product.id%>_product_rate").html("<%= pluralize(@product.rates.count, 'Like') %>");
+
+

@@ -1,0 +1,6 @@
+class AjaxController < ApplicationController
+   respond_to :js
+   def empty_cart
+     Cart.where(:cart_id=>request.session_options[:cart_id]).destroy_all
+   end
+end

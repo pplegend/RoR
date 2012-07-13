@@ -1,0 +1,6 @@
+<%= form_for @order do |f| %>
+  <%= f.error_messages %>
+    <p>Name: <%= @order.ship_to_first_name %> <%= @order.ship_to_last_name %></p>
+    <p>TODO Display order confirmation details</p>
+  <p><%= f.submit "Complete Order" %></p>
+<% end %>

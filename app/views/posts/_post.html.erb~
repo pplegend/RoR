@@ -1,0 +1,9 @@
+<%= div_for post do %>
+	<p><b><%= post.name %></b> wrote:</p>
+  <%= content_tag(:p, post.content, :class => "content-body") %>
+  <span class="dateandoptions">
+    Posted <%=time_ago_in_words(post.created_at)%> ago
+    <%= link_to 'Delete', post_path(post), :method => :delete, :class => "delete", :remote => true  %>
+  </span>
+
+<% end %>

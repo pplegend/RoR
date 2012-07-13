@@ -1,0 +1,6 @@
+<%= form_for [@product, Rate.new], :remote=>true do |f| %>  
+    <%= f.hidden_field :user_id,  :value=>current_user.id %>
+    <input type="hidden" name="product_id" value="<%= @product.id%>"/>
+    <button type="submit" class="product_show_button btn"><i class="icon-heart"></i> Like</button>
+    <span class="bubble me product_rate" id="product_rate"><% if @product.rates.first %><%= @product.rates.first.rate %><% else %> 0 <% end %></span>
+<% end %>

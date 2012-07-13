@@ -1,0 +1,9 @@
+class AddColumnToCartItem < ActiveRecord::Migration
+  def self.up
+    add_column :, :amount, :integer
+  end
+
+  def self.down
+    remove_column :cart_items, :amount
+  end
+end

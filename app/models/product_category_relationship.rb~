@@ -1,0 +1,16 @@
+class ProductCategoryRelationship < ActiveRecord::Base
+  def self.up
+    create_table :product_category_relationships do |t|
+      t.integer :product_id
+      t.integer :category_id
+
+      t.timestamps
+    end
+   add_index :product_category_relationships, :product_id
+   add_index :product_category_relationships, :category_id
+  end
+
+  def self.down
+    drop_table :product_category_relationships
+  end
+end
