@@ -1,4 +1,4 @@
-<%= form_for @product, :html => { :multipart => true} do |f| %>
+<%= form_for @product, :html => { :multipart => true, :class=>'well'} do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -10,36 +10,21 @@
       </ul>
     </div>
   <% end %>
+  
+    <%= f.text_field :title , :placeholder=> :title %>
+    <%= f.text_field :price , :placeholder=> :price %></br>
+    <%= f.text_area :description , :placeholder=> :description %></br>
+    <p><%= f.file_field :image , :placeholder=> :image %></p></br>
+    <p> <%= f.text_field :tag_list, :size => 30 , :placeholder=> :Tags %></p>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-   <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br />
-    <%= f.file_field :image %>
-  </div>
-<p>
-  <%= f.label :tag_list %>
-  <%= f.text_field :tag_list, :size => 30 %>
-</p>
-<%= f.label :categories %><br />
   <% for category in @categories %>
-	<li>
+	<label class="checkbox inline">
 	
 	<%= check_box_tag "category_ids[]", category.id %>
         <%= category.content %>
-	</li>
+	</label>
   <% end %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Submit', :class=>'btn' %>
   </div>
 <% end %>

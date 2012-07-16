@@ -8,4 +8,7 @@ class CartsController < ApplicationController
      end
     
   end
+ def cart_items_list
+   
+ end
 end

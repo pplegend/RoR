@@ -1,24 +1,32 @@
 <% if flash[:cart_notice] %>
    <%= render "carts/cart_notice" %>
 <% end %>
-<h3>Your shopping Cart </h3>
-<p>
-<strong>
-<%= link_to "Proceed to Checkout", '/checkouts/index' unless controller.controller_name == 'checkouts' %>
-</strong>
-</p>
 
-<ul>
 <% if @cart.cart_items %>
-  <% for item in @cart.cart_items %>
-  <li id="cart_item_<%= item.product.id %>">
-   <dd><%= item.product.title %><dd>
-   <dt><%= item.amount %></dt>
-  </li>
-  <% end %>
- <dt><%= @cart.total %></dt>
+<p style="text-align:center"><strong>Your shopping Cart </strong></p></br>
+<table class=" table table-striped table-bordered">
+  <thead>
+    <tr>
+       <th>Product</th>
+       <th>Price /unit</th>
+       <th>Amount</th>
+       <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for item in @cart.cart_items %>
+      <tr>
+      	<td><%= item.product.title%></td>
+      	<td><%= item.product.price%></td>
+      	<td><%= item.amount %></td>
+      	<td><%= item.amount*item.product.price %></td>
+      </tr>
+    <% end %>
+    <tr><td>Total</td><td></td><td></td><td><%= @cart.total %></td></tr>
+  </tbody>
+</table>
+
+<% else %>
+  <p style="text-align:center"><strong>Your shopping Cart is empty! </strong></p></br>
 <% end %>
-</ul>
-<p>
-<%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), orders_checkout_path %>
-</p>
+

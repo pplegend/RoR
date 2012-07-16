@@ -21,4 +21,9 @@ class Cart < ActiveRecord::Base
      cart_item.destroy 
     end
    end
+   
+   def total_amount
+     cart_items.inject(0) {|sum,n| n.amount + sum }
+   end
+   
 end

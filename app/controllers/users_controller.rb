@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         UserMailer.welcome_email(@user).deliver
-        format.html { redirect_to(@user, :notice => "Confirmation email has been sent to #{@user.email}, please active it!") }
+        format.html { redirect_to(root_path, :notice => "Confirmation email has been sent to #{@user.email}, please active it!") }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }

@@ -1,2 +1,3 @@
-$("#shopping_cart").html("<%= escape_javascript(render("carts/cart")) %>");
-
+$(".shopping_cart").html("<%= escape_javascript(render("carts/cart_amount")) %>");
+/* Highlight the new value */
+$(".shopping_cart").effect("highlight", {}, 3000);

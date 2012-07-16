@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
    end
    def create
     if user = User.authenticate(params[:session][:email],params[:session][:password])
+      if user.is_active
       # Save the user ID in the session so it can be used in
       # subsequent requests
       sign_in user
@@ -12,6 +13,11 @@ class SessionsController < ApplicationController
       flash.now[:error]="Invalid email/password combination"
         @title ="Sign in"
         render 'new'
+    end
+    
+    else
+      flash[:error]="Please actvie your account first!"
+      redirect_to root_url
     end
   end
 
@@ -33,6 +39,7 @@ class SessionsController < ApplicationController
           user=User.new :name=>auth_hash["info"]["name"], :email=>auth_hash["info"]["email"]
           user.authorizations.build :provider=>auth_hash["provider"], :uid=>auth_hash["uid"]
           user.password="this is fake password"
+          user.toggle(:is_active) 
           user.save!
           sign_in user
           redirect_back_or(user)

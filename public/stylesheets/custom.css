@@ -105,7 +105,7 @@ margin: 0;
 -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.54), inset 0 38px 50px 147px white;
 box-shadow: 0 1px 5px rgba(0,0,0,0.54), inset 0 38px 50px 147px white;
 padding-top:25px;
-margin:0px 0px 0px 0px;
+margin:0px;
 }
 .radio_box_without_radius div .span5{
 margin-left:0px;
@@ -117,7 +117,7 @@ border-radius: 20px;
 -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.54), inset 0 38px 50px 147px white;
 box-shadow: 0 1px 5px rgba(0,0,0,0.54), inset 0 38px 50px 147px white;
 padding:25px;
-margin:20px;
+margin:20px 10px 20px 0px;
 }
 .product_show_button{
   margin-left:15px;
@@ -239,4 +239,15 @@ form#new_comment button{
 .product_details{
 margin-left:17px;
 padding:5px;
+}
+
+.container-center{
+ margin-left:10px;
+ 
+ 
+}
+
+#product_description{
+ width:430px;
+ height:70px;
 }

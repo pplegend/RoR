@@ -1,7 +1,7 @@
 class CheckoutsController < ApplicationController
 
   def index
-   @order=Order.new(:expression_token=>params[:token])
+   @order=Order.new()
    @title="Checkout"
    if @cart.products.empty?
     flash[:notice]="Your shopping cart is empty!"

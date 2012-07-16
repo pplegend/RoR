@@ -13,7 +13,7 @@ Store::Application.routes.draw do
   get "checkouts/index"
   get "checkouts/place_order"
   get "checkouts/thank_you"
- 
+  
   resources :posts
    resources :forums do
    resources :topics
@@ -43,6 +43,7 @@ Store::Application.routes.draw do
   match '/signup', :to=>'users#new'
   match '/logout', :to=>'sessions#destroy'
   match '/add_item', :to=>'carts#add'
+  match '/cart_item_list', :to=>'carts#cart_items_list', :as=>'cart_items_list'
   match '/forget_password/', :to=>'users#forget_password'
   match '/reset_password/(:email)', :to=>'users#reset_password',:constraints => { :email => /[^\/]+/}, :as=>'reset_password'
   match '/recover_password/(:email/:code)', :to=>'users#recover_password',:constraints => { :email => /[^\/]+/}
