@@ -29,9 +29,9 @@ class ProductsController < ApplicationController
       end
       
     end 
-    
+    @related_products=@related_products.uniq{|product| product.id}
 
-    @comments=@product.comments.paginate(:page=> params[:page],:per_page=>5)
+    @comments=@product.comments.paginate(:page=> params[:page],:per_page=>6)
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @product }
@@ -64,7 +64,7 @@ class ProductsController < ApplicationController
    # @product.categories.create
     respond_to do |format|
       if @product.save
-	 @product.categories=@categories
+	       @product.categories=@categories
         format.html { redirect_to(@product, :notice => 'Product was successfully created.') }
         format.xml  { render :xml => @product, :status => :created, :location => @product }
       else
@@ -102,4 +102,11 @@ class ProductsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def search
+     @products=Product.search params[:search]
+     @products<< Product.tagged_with([params[:search]])
+
+  end
+ 
 end

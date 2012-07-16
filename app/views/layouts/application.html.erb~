@@ -13,28 +13,33 @@
 <%= javascript_include_tag "application.js" %>
   <%= csrf_meta_tag %>
 </head>
-<body>
+<body style="width: 960px">
 
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
        <div class="container">
         <div class="row span12">
-         <div class="nav-collapse collapse span4"> <%= render "layouts/header" %> </div>
+         <div class="nav-collapse collapse span3"> <%= render "layouts/header" %> </div>
 
 
 <div class="span4">
-<form class="custom_form form-search">
-    <input type="text" class="input-medium search-query">
-    <button type="submit" class="btn">Search</button>
-</form>
+  <%= render "products/search_form" %>
 </div>
-<div class="header_right span3">
+<div class="header_right span4">
 <% unless signed_in? %>
-<ul class="nav nav-pills"><li><a href="<%= signup_path %>">Have an account?</a></li><li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown">sign in<b class="caret"></b></a></li></ul>
+<ul class="nav nav-pills">
+    <li><a href="<%= signup_path %>">Have an account?</a></li>
+    <li class="dropdown" >
+       <a class="dropdown-toggle" data-toggle="dropdown">sign in<b class="caret"></b></a>
+    </li>
+</ul>
 
 <% else %>
-
-  <ul class="nav nav-pills"><li><%= link_to "Log out", logout_path %></li></ul>
+<span><li class="icon-eye-open icon-white"></li>(3)</span><button class=" btn"><i class="icon-shopping-cart"></i>CheckOut</button> 
+ <ul class="nav nav-pills">
+     <li><%= link_to current_user.name, current_user %> </li>
+     <li><%= link_to "Log out", logout_path %></li>
+ </ul>
 <% end %>
 </div>
 </div>
@@ -45,9 +50,6 @@
     </div>
 </div>
 
-<div class="signin_menu" id="signin_menu">
-<%= render :template=>"/sessions/new/" %>
-</div>
 
 
 <div class="container">
@@ -64,7 +66,9 @@
  
 </div>
 
-
+<div class="signin_menu" id="signin_menu">
+<%= render :template=>"/sessions/new/" %>
+</div>
 <!--
 <div class="row">
   <div span="12"><div class="row"></div><div class='span2'><%= render "layouts/content_left" %></div><div class="span7"><%= yield %></div><div id="shopping_cart" class="span3"> <%= render "carts/cart" %></div></div>

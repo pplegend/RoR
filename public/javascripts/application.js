@@ -73,6 +73,10 @@
    $(this).parent().siblings(".comment_div").css("display","block");
 });
   $('.title_popover').popover('hide');
+
+
+
+
 });
 
 

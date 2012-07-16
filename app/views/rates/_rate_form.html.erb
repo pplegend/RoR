@@ -5,6 +5,6 @@
     <input type="hidden" name="product_id" value="<%= @product.id%>"/>
     <button type="submit" class="product_show_button btn"><i class="icon-heart"></i> Like</button>
 <% unless params[:action]=="home_page" %>
-    <span class="bubble me product_rate" id="product_rate"><% if @product.rates.first %><%= @product.rates.first.rate %><% else %> 0 <% end %></span>
+    <span class="bubble me <%= @product.id %>_product_rate" id="product_rate"><% if @product.rates.first %><%= @product.rates.first.rate %> likes<% else %> 0 like<% end %></span>
 <% end %>
 <% end %>

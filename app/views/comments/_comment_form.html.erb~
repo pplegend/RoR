@@ -1,10 +1,10 @@
+<p>
 <%= form_for [@product, Comment.new], :remote => true do |f| %>  
-    <%= f.text_field :content, :size=>"10px", :placeholder=>"Comment" %>   
+    <%= f.text_field :content, :placeholder=>"Comment" %>   
 <% if signed_in? %>
   <%= f.hidden_field :user_id,  :value=>current_user.id %>
   <%= f.hidden_field :product_id,  :value=>@product.id %>
 <% end %>
-
-  <input type="hidden" name="product_id" value="<%= @product.id%>"/>
-  <button type="submit" class="btn"><i class="icon-comment"></i> Comment </button>
+  <button  type="submit" class="btn"><i class="icon-comment"></i></button>
 <% end %>
+</p>

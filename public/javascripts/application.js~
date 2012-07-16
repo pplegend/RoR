@@ -42,14 +42,15 @@
 			});
 
         //button on top of image
-       $('a').mouseover(function(){
+       $('ul#tiles a').mouseover(function(){
         $(this).prev().css('display','inline-block');
       });	
-      $('a').mouseout(function(){
+      $('ul#tiles a').mouseout(function(){
  
          $(this).prev().css('display','none');
       
      });
+      
      $('.button_group').mouseout(function(){
       $(this).css('display','none');
    });
@@ -71,7 +72,14 @@
   $('.comment_button').click(function(){
    $(this).parent().siblings(".comment_div").css("display","block");
 });
-  $('.title_popover').popover('show');
+  $('.title_popover').popover('hide');
+
+
+  //click navigation
+  $('li').click(function(){
+   $(this).addClass('active');
+});
+
 });
 
 

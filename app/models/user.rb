@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
    has_many :posts
    has_many :topics
    has_many :forums
+   has_many :comments, :dependent=>:destroy
    has_many :authorizations
    email_regex=/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
    attr_accessible :name, :email, :password, :password_confirmation

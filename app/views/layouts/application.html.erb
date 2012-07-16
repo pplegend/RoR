@@ -23,10 +23,7 @@
 
 
 <div class="span4">
-<form class="custom_form form-search">
-    <input type="text" class="input-medium search-query">
-    <button type="submit" class="btn">Search</button>
-</form>
+  <%= render "products/search_form" %>
 </div>
 <div class="header_right span4">
 <% unless signed_in? %>
@@ -38,7 +35,7 @@
 </ul>
 
 <% else %>
-
+<span style="color:red"><li class="icon-eye-open icon-white"></li>(3)</span><button class=" btn"><i class="icon-shopping-cart"></i>CheckOut</button> 
  <ul class="nav nav-pills">
      <li><%= link_to current_user.name, current_user %> </li>
      <li><%= link_to "Log out", logout_path %></li>

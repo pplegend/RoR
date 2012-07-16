@@ -64,7 +64,7 @@ class ProductsController < ApplicationController
    # @product.categories.create
     respond_to do |format|
       if @product.save
-	 @product.categories=@categories
+	       @product.categories=@categories
         format.html { redirect_to(@product, :notice => 'Product was successfully created.') }
         format.xml  { render :xml => @product, :status => :created, :location => @product }
       else
@@ -102,4 +102,11 @@ class ProductsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def search
+     @products=Product.search params[:search]
+     #@products<< Product.tagged_with([params[:search]])
+
+  end
+ 
 end
