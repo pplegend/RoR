@@ -1,3 +1,36 @@
-<div id="footer" class="span6"><%= debug(params) if Rails.env.development? %></div>
-<div class="span6">Session: <%=session[:cart_id] %>
-Cart: <%=@cart.id %></div>
+<div id="footer" class="row">
+<hr>
+
+
+<div class="span3"> 
+	<h2><font color="black">Contacts</font></h2>
+	<ul class="nav nav-tabs nav-stacked">
+	  <li><a href="#">Yongzhen Zhang</a></li>
+	  <li><a href="#">4.m@live.cn</a></li>
+	  <li><a href="#">Skype:pplegend</a></li>
+	</ul>
+</div>
+
+<div class="span3"> 
+	<h2><font color="black">Projects</font></h2>
+	<ul class="nav nav-tabs nav-stacked">
+	  <li><a href="#">RoR store</a></li>
+	  <li><a href="#">Django store</a></li>
+	  <li><a href="#">Php action</a></li>
+	</ul>
+</div>
+<div class="span3"> 
+	<h2><font color="black">Pages</font></h2>
+	<ul class="nav nav-tabs nav-stacked">
+	  <li><a href="#">Home</a></li>
+	  <li><a href="#">About me</a></li>
+	  <li><a href="#">Events</a></li>
+	</ul>
+</div>
+
+</div>
+<div class="row">
+<div class="span5">Copyright&copy; 2012.</div>
+</div>
+<%#= debug(params) if Rails.env.development? %></div>
+<%#=session[:cart_id] %>

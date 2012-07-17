@@ -1,18 +1,18 @@
 
 <div class="container ">
   <div class="row">
-    <div class="span5"><div class="radio_box"><%= image_tag @product.image.url(:medium) %></div> 
+    <div class="span5">
+    
+        <div class="radio_box"><%= image_tag @product.image.url(:medium) %>
+        	     <div class="well product_details">
+       					<p><i class="icon-bell"></i><%= @product.price %>$</p>
+      					<p><i class="icon-tags"></i> <%= @product.tag_list %></p>
+       					<p><i class="icon-info-sign"></i><%= @product.description %></p>
+    			</div>
+        </div> 
 
      <%= render 'rates/rate_form'%>
-     <div><%= link_to '<i class="icon-plus"></i>Add to cart'.html_safe, {:controller=>"carts", :action=>"add", :id=>@product.id}, :class=>'btn product_add_button',:remote=>true %></div>
-      
-
-     <div class="well product_details">
-       <p><i class="icon-bell"></i><%= @product.price %>$</p>
-       <p><i class="icon-tags"></i> <%= @product.tag_list %></p>
-       <p><i class="icon-info-sign"></i><%= @product.description %></p>
-    </div>
-
+     <div><%= link_to '<i class="icon-plus"></i>Add to cart'.html_safe, {:controller=>"carts", :action=>"add", :id=>@product.id}, :class=>'btn product_add_button',:remote=>true %></div>    
   </div>
 
     <div class="span4 radio_box"> 
@@ -42,26 +42,34 @@
 </div>
   </div>
 
-<div class="row radio_box_without_radius" style="margin-left: 1px;">
-<div>
+<div class="row radio_box_without_radius" style="margin-left: 1px; ">
+<div >
   <div class="span5">
-        <div class="related_products_list"><ul class="nav">
-         <% @related_products.each do |related_product| %>
-         <li><dl><dd class="pic"><%= image_tag related_product.image.url(:thumb) %></dd> 
-          <dt>title</dt><dd>price</dd></dl></li>
-          <% end %>
-     </ul>
-     </div>
+        <h1><font color="#04B404">Recomand products:</font></h1>
+        <div class="related_products_list related_products_list_left">
+         	<% @related_products.each do |related_product| %>
+         	<li style="display:inline-block">
+         	 <dl><dt ><%= link_to (image_tag related_product.image.url(:thumb)),related_product %></dt> 
+         	 <dd><font color="blue"><%= related_product.title %></font></dd>
+         	 <dd><font color="red"><%= related_product.price %> $</font></dd></dl></li>
+          	<% end %>
+     	</div>
   </div>
 
    <div class="span5">
-  
+        <h1><font color="#FA5858">Hot products:</font></h1>
+        <div class="related_products_list">
+         	<% @related_products.each do |related_product| %>
+         	<li style="display:inline-block">
+         	 <dl><dt ><%= link_to (image_tag related_product.image.url(:thumb)),related_product %></dt> 
+         	 <dd><font color="blue"><%= related_product.title %></font></dd>
+         	 <dd><font color="red"><%= related_product.price %> $</font></dd></dl></li>
+          	<% end %>
+     	</div>
    <div>
 </div>
 <% if @cart %>
-<div id="shopping_cart">
-<%= render :partial => "carts/cart" %>
-</div>
+
 <% end %>
 </div>
 

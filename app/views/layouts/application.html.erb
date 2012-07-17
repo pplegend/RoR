@@ -26,7 +26,7 @@
 <div class="span4">
   <%= render "products/search_form" %>
 </div>
-<div class="header_right span4">
+<div class="header_right span5">
 <% unless signed_in? %>
 <ul class="nav nav-pills">
     <li><a href="<%= signup_path %>">Have an account?</a></li>
@@ -76,16 +76,17 @@
  
 </div>
 
-<div class="signin_menu" id="signin_menu">
-<%= render :template=>"/sessions/new/" %>
-</div>
+
+
 <!--
 <div class="row">
   <div span="12"><div class="row"></div><div class='span2'><%= render "layouts/content_left" %></div><div class="span7"><%= yield %></div><div id="shopping_cart" class="span3"> <%= render "carts/cart" %></div></div>
   <div class="row"> <div class="span12"><%= render "layouts/footer" %></div></div>
 </div>
 -->
-<%= render "layouts/footer" %>
+
+<div class="signin_menu" id="signin_menu"><%= render :template=>"/sessions/new/" %></div>
 </div>
+<%= render "layouts/footer" %>
 </body>
 </html>

@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  before_filter :authenticate
   def add
     @product=Product.find(params[:id])
     @item=@cart.add(params[:id])

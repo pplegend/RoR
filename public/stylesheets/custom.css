@@ -218,12 +218,16 @@ display:none;
 .row{
 overflow:visible;
 }
+
 .related_products_list{
   float:left;
+  
+  margin:2px;
 }
-ul.nav li{
-  float:left;
+.related_products_list_left{
+  border-right:1px solid gray;
 }
+
 body{
   margin:auto;
 }
@@ -237,8 +241,9 @@ form#new_comment button{
 
 }
 .product_details{
-margin-left:17px;
+
 padding:5px;
+float:right;
 }
 
 .container-center{
@@ -250,4 +255,7 @@ padding:5px;
 #product_description{
  width:430px;
  height:70px;
+}
+#footer{
+ margin:0px;
 }

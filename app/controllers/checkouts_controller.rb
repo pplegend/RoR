@@ -5,7 +5,7 @@ class CheckoutsController < ApplicationController
    @title="Checkout"
    if @cart.products.empty?
     flash[:notice]="Your shopping cart is empty!"
-    redirect_to :controller=>'products'
+    redirect_to root_path
    end
   end
 
