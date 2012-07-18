@@ -10,7 +10,7 @@
  <%= javascript_include_tag "js/bootstrap.js" %>
  <%= javascript_include_tag "js/bootstrap-popover.js" %>
   <%= javascript_include_tag "js/bootstrap-dropdown.js" %>
-<%= javascript_include_tag "jquery.wookmark.js" %>
+
 <%= javascript_include_tag "application.js" %>
   <%= csrf_meta_tag %>
 </head>
@@ -88,5 +88,30 @@
 <div class="signin_menu" id="signin_menu"><%= render :template=>"/sessions/new/" %></div>
 </div>
 <%= render "layouts/footer" %>
+
+<%= javascript_include_tag "jquery.wookmark.js" %>
+<script type="text/javascript">
+var options = {
+        autoResize: true, // This will auto-update the layout when the browser window is resized.
+        container: $('#main'), // Optional, used for some extra CSS styling
+        offset: 2, // Optional, the distance between grid items
+        itemWidth: 210 // Optional, the width of a grid item
+      };
+      
+       // Get a reference to your grid items.
+      var handler = $('#main li');
+      
+      // Call the layout function.
+      handler.wookmark(options);
+      
+      // Capture clicks on grid items.
+      $('#tiles li .comment_button').click(function(){
+        // Randomize the height of the clicked item.
+        var newHeight = $(this).parent().siblings("a").children("img").height() + 110;
+        $(this).parent().parent().css('height', newHeight+'px');
+        // Update the layout.
+        handler.wookmark();
+      });
+      </script>
 </body>
 </html>

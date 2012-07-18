@@ -1,5 +1,4 @@
 
-
 <%= div_for comment do %>
       <% if current_user && current_user.admin? %>
       <%= link_to 'Delete', product_comment_path(@product), :method => :delete, :class => "delete", :remote => true  %>
