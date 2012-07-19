@@ -1,6 +1,13 @@
 <ul class="nav">
    <li class="<%= 'active' if params[:controller] == 'products' %>"><%= link_to "Home", root_path %></li>
    <li class="<%= 'active' if params[:controller] == 'users' %>"><%= link_to "Users", users_path %></li>
+   <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Category<b class="caret"></b></a>
+   	<ul class="dropdown-menu"> 
+   		<% for category in  @categories %>
+   		 <li><%= link_to category.content, category_products_path(category) %><li>
+   		<% end %>
+   	</ul>
+   </li>
    <li><%= link_to "Forum", forums_path %></li>
 
    

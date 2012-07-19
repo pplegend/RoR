@@ -1,6 +1,17 @@
-<h1>Listing products</h1>
+<table class="table table-striped products_list_table">
 <% @products.each do |product| %>
-    <p><%= link_to image_tag(product.image.url(:thumb)), product %></p>
-
+   <tr><td>
+        <%= link_to image_tag(product.image.url(:thumb)), product %>
+    </td>
+    <td><font color="#1C1C1C"><%= product.title %></font><br/>
+       <font color="#FE2E2E"><%= product.price %></font><br/>
+       <font color="#848484"><%= product.tag_list %></font></td>
+    <td>
+      <div class="view_details_link">
+         <span class="view_details_text"><%= link_to "View details", product%></span>
+      
+      </div></td>
+   </tr>
+	
 <% end %>
-<%= link_to 'New Product', new_product_path %>
+</table>

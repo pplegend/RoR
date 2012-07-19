@@ -3,9 +3,9 @@
 //sign in
         $(document).ready(function() {
            // Prepare layout options.
-      
+        	$('.dropdown-toggle').dropdown();
         //sign in button
-            $(".dropdown-toggle").click(function(e) {          
+            $(".dropdown-signin").click(function(e) {          
 				e.preventDefault();
                 $("#signin_menu").toggle();
 				
@@ -15,7 +15,7 @@
 				return false
 			});
 			$(document).mouseup(function(e) {
-				if($(e.target).parent("a.dropdown-toggle").length==0) {
+				if($(e.target).parent("a.dropdown-signin").length==0) {
 					
 					$("#signin_menu").hide();
 				}
