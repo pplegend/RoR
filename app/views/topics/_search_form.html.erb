@@ -1,0 +1,6 @@
+<% form_tag url_for(:controller=>'topics', :action=>'search'), :class=>'custom_form form-search'  do %>
+  <%= text_field_tag :search, params[:search], :id=>'search_field' ,:class=>'input-medium search-query' %>
+  <button type='submit' class='btn' >Search</button>
+<% end %>
+
+

@@ -6,3 +6,7 @@
 .custom_form{
   margin:0px;
 }
+textarea#forum_description {
+  width: 90%;
+  height: 100px;
+}

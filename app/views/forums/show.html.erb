@@ -25,6 +25,7 @@
   <% end %>  
   </tbody>
 </table>  
-<p><%= link_to "Forum lists", "/forums" %> <%= link_to "New Topic", new_forum_topic_path(@forum) %></p>   
-
-
+<button class="btn" id="new_topic_btn"><i class='icon-plus'></i>New topic</button>
+<div class="new_topic_form" style='display:none'>
+<%= render 'topics/form' %>
+</div>

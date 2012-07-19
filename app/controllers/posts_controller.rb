@@ -82,4 +82,10 @@ class PostsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def search
+      @topics=Topic.search params[:search]
+      #@products<< Product.tagged_with([params[:search]])
+ 
+   end
 end

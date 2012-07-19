@@ -5,7 +5,7 @@ Store::Application.routes.draw do
   get "rates/index"
   get "rates/create"
   get "rates/destroy"
-
+  
   get "comments/index"
   get "comments/create"
   get "comments/destroy"
@@ -38,6 +38,7 @@ Store::Application.routes.draw do
   end
   root :to=>'products#home_page'
   match "products/search", :to=>"products#search"
+  match "topics/search", :to=>"topics#search"
   match '/checkouts/place_order', :to=>'checkouts#place_order'
   match '/signin', :to=>'sessions#new'
   match '/signup', :to=>'users#new'
