@@ -1,22 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @topic.name %>
-</p>
-<p>
-  <b>Description:</b>
-  <%= @topic.description %>
-</p>
-<span id="posts_count"><%= pluralize(@posts.count, "Comment") %></span>
-<div id="comments">
-  <%= render :partial => @posts, :locals => { :list => true } %>
-</div>
-<% form_for Post.new  do |f| %>
-	<%= f.label :content, "Your comments" %><br />
-	<%= f.text_area :content, :rows => 8 %><br />
+
+<% link_to 'Edit', edit_forum_topic_path(@forum,@topic) %> 
+<% link_to 'Back', forum_topics_path(@forum) %>
+
+<table class="table table-striped table-bordered">
+  
+    <tr><td> <h1><font color="#045FB4"><%= @topic.name %></font></h1></br>by 
+                    <small><font color="#2E64FE"><%= @topic.user.name %></font></small>
+                    <font color="#848484"> <%= @topic.created_at %></font>
+					<br/>
+                    <hr><%= @topic.description %>
+               </td>
+               <td> <small><font color="#2E64FE"><%= @topic.user.name %></font></small><br/>
+                    Posts: <small><font color="#848484"><%=@topic.user.posts.count %></font></small><br/>
+                    Joined:<small><font color="#848484"><%=time_ago_in_words @topic.user.created_at%></font></small>
+               </td>
+           </tr>
+             <%= render :partial => @posts, :locals => { :list => true } %>
+ 
+</table>
+<% form_for Post.new ,:html=>{:class=>'well'} do |f| %>
+	<%= f.text_area :content, :rows => 5,:cols=>45 %><br />
          <input type="hidden" name="topic_id" value="<%= params[:id]%>">
-	<%= f.submit "Add comment" %>
+         <% if signed_in? %>
+  			<%= f.hidden_field :user_id,  :value=>current_user.id %>
+		<% end %>
+	<%= f.submit "Add comment", :class=>'btn' %>
 <% end %>
-<%= link_to 'Edit', edit_forum_topic_path(@forum,@topic) %> |
-<%= link_to 'Back', forum_topics_path(@forum) %>

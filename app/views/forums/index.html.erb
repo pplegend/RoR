@@ -1,20 +1,35 @@
-<table>  
+<table class="table table-striped table-bordered">  
+  <thead>
   <tr>  
-    <th width="70%">Forum</th>  
-    <th width="30%">Last Post</th> 
+    <th>Forum</th>  
+    <th>Last Post</th> 
+    <th>Author</th>
    
   </tr>  
+  </thead
+  <tbody>
   <% for forum in @forums %>  
     <tr>  
       <td><h4><%= link_to h(forum.name), forum_path(forum.id) %></h4>  
-        <small><%= forum.topics.count %> topics</small><br />  
-        <%=h forum.description %></td>  
-      <td> <%=  'anounes' unless forum.name %></td>  
-      <td><%= link_to "Show", forum %></td>  
-      <td><%= link_to "Edit", edit_forum_path(forum) %></td>  
-      <td><%= link_to "Destroy", forum, :confirm => 'Are you sure?', :method => :delete %></td>  
+        <small><%= pluralize(forum.topics.count,'topic' )%> </small><br />  
+       <font color="#848484"> <%=h forum.description %></font></td>  
+        
+      <td> <% if forum.topics.last %>
+       		<%= forum.topics.last.created_at %> <br/>
+       		by <font color="#5882FA"><%= forum.topics.last.user.name %></font>
+       	   <% else %>
+       	   	<%= forum.created_at %><br/>
+       	   	
+       	   <% end %></td> 
+       <td><font color="#FA5858"><%= forum.user.name %></font></td>
+       
+       
+      <% link_to "Show", forum %>  
+      <% link_to "Edit", edit_forum_path(forum) %>  
+     <% link_to "Destroy", forum, :confirm => 'Are you sure?', :method => :delete %>
     </tr>  
   <% end %>  
+  </tbody>
 </table>  
   
-<p><%= link_to "New Forum", new_forum_path %></p>  
+<p><%= link_to "<i class='icon-plus'></i>New Forum".html_safe, new_forum_path,:class=>"btn" %></p>  

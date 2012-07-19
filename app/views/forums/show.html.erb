@@ -1,18 +1,29 @@
-<table>  
+<table class="table table-striped table-bordered">  
+ <thead>
   <tr>  
-    <th width="60%">Topic Title</th>  
-    <th width="10%">Replies</th>  
-    <th width="30%">Last Post</th>  
+    <th>Topic Title</th>  
+    <th>Replies</th>  
+    <th>Last Post</th>  
   </tr>  
-  <% for topic in @forum.topics %>  
+  </thead>
+  <tbody>
+  <% for topic in @topics %>  
     <tr>  
-      <td><%= link_to h(topic.name), forum_topic_path(@forum,topic) %>  
+      <td><%= link_to h(topic.name), forum_topic_path(@forum,topic) %> <br/>
+        by <small> <font color="#848484"><%= topic.user.name %></font></small>
+      </td> 
       <td><%= topic.posts.size %></td>  
-      <td class="right"><%= distance_of_time_in_words_to_now topic.updated_at %> by <%= topic.name ||topic.user.name %></td>  
-      <td><%= link_to "Edit", edit_forum_topic_path(@forum,topic) %></td>  
-      <td><%= link_to "Destroy", forum_topic_path(@forum,topic), :confirm => 'Are you sure?', :method => :delete %></td>  
+      <td class="right">
+         <%= distance_of_time_in_words_to_now topic.updated_at %> 
+         <% if topic.posts.last %><br/>
+         by <font color="#5882FA"><%= topic.posts.last.user.name %></font>
+         <% end %>
+      </td>  
+      <% link_to "Edit", edit_forum_topic_path(@forum,topic) %> 
+      <% link_to "Destroy", forum_topic_path(@forum,topic), :confirm => 'Are you sure?', :method => :delete %> 
     </tr>  
   <% end %>  
+  </tbody>
 </table>  
 <p><%= link_to "Forum lists", "/forums" %> <%= link_to "New Topic", new_forum_topic_path(@forum) %></p>   
 

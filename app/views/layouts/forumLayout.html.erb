@@ -2,21 +2,105 @@
 <html>
 <head>
   <title><%= title %></title>
-  <%= stylesheet_link_tag 'application', 'forum' %>
-  <%= javascript_include_tag  "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" %>
-  <%= javascript_include_tag  "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" %>
+  <%= stylesheet_link_tag 'application', 'forum' ,'grid','css/bootstrap'%>
+  <%= javascript_include_tag "juquery-1.7.2.min.js" %>
+
   <%= javascript_include_tag "jquery-rails.js" %>
 
   <%= csrf_meta_tag %>
 </head>
-<body>
-<div id="forum-content">
-	<%= yield %>
+<body >
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+       <div class="container">
+        <div class="row span12">
+         <div class="nav-collapse collapse span3"> <%= render "layouts/header" %> </div>
+
+
+<div class="span4">
+  <%= render "products/search_form" %>
 </div>
-<div><%= debug(params) if Rails.env.development? %></div>
-<p>
-<% if signed_in? %>
-<%= current_user.name %></p>
+<div class="header_right span5">
+<% unless signed_in? %>
+<ul class="nav nav-pills">
+    <li><a href="<%= signup_path %>">Have an account?</a></li>
+    <li class="dropdown" >
+       <a class="dropdown-toggle" data-toggle="dropdown">sign in<b class="caret"></b></a>
+    </li>
+</ul>
+
+
+
+<% else %>
+     <%= link_to "<span style='color:red' class='shopping_cart'>(#{@cart.total_amount})</span>".html_safe, cart_items_list_path %>
+      
+      <li class="icon-eye-open icon-white "></li>
+     <button onClick="location.href='<%= checkouts_index_url %>'" class=" btn"><i class="icon-shopping-cart"></i>CheckOut</button> 
+ <ul class="nav nav-pills">
+     <li><%= link_to current_user.name, current_user %> </li>
+     <li><%= link_to "Log out", logout_path %></li>
+ </ul>
 <% end %>
+</div>
+</div>
+
+</div>
+       </div>
+
+    </div>
+</div>
+
+
+<div class="container">
+
+    
+    <% if params[:action]== 'index' %>
+    <ul class="breadcrumb">
+    <li class="active">
+   Forums <span class="divider">/</span>
+    </li>
+    </ul>
+   <% end %>
+   
+   
+   <% if params[:action]== 'show' && params[:controller]== 'forums' %>
+   <ul class="breadcrumb">
+    <li>
+    <a href="<%=forums_path %>">Forums</a> <span class="divider">/</span>
+    </li>
+     <li class="active">
+   		Topics <span class="divider">/</span>
+    </li>
+    </ul>
+   <% end %>
+    
+    
+     <% if params[:action]== 'show' && params[:controller]== 'topics' %>
+     <ul class="breadcrumb">
+    <li>
+    <a href="<%=forums_path %>">Forums</a> <span class="divider">/</span>
+    </li>
+    <li>
+    <a href="/forums/<%= params[:forum_id] %>">Topics</a> <span class="divider">/</span>
+    </li>
+     <li class="active">
+   		Posts <span class="divider">/</span>
+    </li>
+    </ul>
+   <% end %>
+   
+  
+
+</div>
+<div class="container">
+	<%= yield %>
+
+<div>
+
+
+<div><%= debug(params) if Rails.env.development? %></div>
+<p><% if signed_in? %><%= current_user.name %></p><% end %>
+
 </body>
 </html>

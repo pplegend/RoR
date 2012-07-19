@@ -10,6 +10,20 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+<div class="row">
+  <div class="span12">
+          <ul class="breadcrumb">
+    <li>
+    <a href="#">Home</a> <span class="divider">/</span>
+    </li>
+    <li>
+    <a href="#">Library</a> <span class="divider">/</span>
+    </li>
+    <li class="active">Data</li>
+    </ul>
+  </div>
+</div>
+
 <div id="forum-content">
 	<%= yield %>
 </div>

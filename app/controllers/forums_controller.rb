@@ -17,7 +17,7 @@ class ForumsController < ApplicationController
   def show
     @forum = Forum.find(params[:id])
     @title=@forum.name
-    
+    @topics=@forum.topics
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @forum }
@@ -43,10 +43,9 @@ class ForumsController < ApplicationController
   # POST /forums
   # POST /forums.xml
   def create
-    @forum = Forum.new(params[:forum])
-
+    @user=User.find(params[:user_id])
     respond_to do |format|
-      if @forum.save
+      if @forum=@user.forums.create!(params[:forum])
         format.html { redirect_to(@forum, :notice => 'Forum was successfully created.') }
         format.xml  { render :xml => @forum, :status => :created, :location => @forum }
       else

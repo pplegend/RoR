@@ -1,9 +1,16 @@
-<%= div_for post do %>
-	
+<tr>
+ <td>
+  <h1><font color="#045FB4">Re:<%= @topic.name %>	</font></h1><br/>
+     by <small><font color="#2E64FE"><%= post.user.name %></font></small> 
+     <font color="#848484"><%=post.created_at %></font> <br>
+  
   <%= content_tag(:p, post.content, :class => "content-body") %>
-  <span class="dateandoptions">
-    Posted <%=time_ago_in_words(post.created_at)%> ago
-    <%= link_to 'Delete', post_path(post), :method => :delete, :class => "delete", :remote => true  %>
-  </span>
-
-<% end %>
+  
+  </td>
+  <td>
+  
+     <small><font color="#2E64FE"><%= post.user.name %></font></small><br/>
+                    Posts: <small><font color="#848484"><%=@topic.user.posts.count %></font></small><br/>
+                    Joined:<small><font color="#848484"><%=time_ago_in_words @topic.user.created_at%></font></small>
+  </td>
+<tr>

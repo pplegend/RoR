@@ -15,7 +15,7 @@ Store::Application.routes.draw do
   get "checkouts/thank_you"
   
   resources :posts
-   resources :forums do
+  resources :forums do
    resources :topics
   end
   resources :topics, :only=>[:create,:destroy]

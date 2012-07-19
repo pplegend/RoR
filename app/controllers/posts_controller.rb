@@ -41,7 +41,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.xml
   def create
-    #@post = Post.new(params[:post])
+   # @post = Post.new(params[:post])
     @topic=Topic.find(params[:topic_id])
     @forum=Forum.find(@topic.forum_id)
     respond_to do |format|
